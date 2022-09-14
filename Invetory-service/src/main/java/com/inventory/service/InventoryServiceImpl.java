@@ -15,19 +15,21 @@ public class InventoryServiceImpl implements InventoryService{
 	@Override
 	public InventoryItem getItemByProductCode(String code) {
 		// TODO Auto-generated method stub
-		InventoryItem item = inventoryDao.findByCode(code).orElse(null);
+		InventoryItem item = inventoryDao.findByCode(code);
 		return item;
 	}
 
 	@Override
 	public boolean updateQuantityByProductCode(String code, int availableQuantity) {
-		if(inventoryDao.findByCode(code).equals(null))
-			return false;
 		if (availableQuantity < 0)
 			return false ;
-		int rows = inventoryDao.updateRecord(code, availableQuantity);
+		if(getItemByProductCode(code) == null) {
+			
+			int rows = inventoryDao.updateRecord(code, availableQuantity);
 		if (rows>0)
-			return true;
+			return true;		
+		}
+		
 		return false;
 	}
 

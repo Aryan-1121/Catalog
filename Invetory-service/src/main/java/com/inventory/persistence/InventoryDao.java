@@ -15,7 +15,7 @@ import javax.transaction.Transactional;
 public interface InventoryDao extends JpaRepository<InventoryItem, Long>{
 
 	@Query(value="from InventoryItem where productCode=:productCode")
-	Optional<InventoryItem> findByCode(String productCode);
+	InventoryItem findByCode(String productCode);
 	
 	
 	@Modifying
