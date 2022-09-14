@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.catalog.bean;
 
 
 import javax.persistence.Entity;
@@ -12,7 +12,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Product{
+public class ProductCatalog{
 
 	@Id
     private int id; 

@@ -1,7 +1,5 @@
-package com.example.demo;
+package com.catalog.bean;
 import java.util.List;
-
-import com.example.bean.Product;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,5 +10,5 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ProductList {
 
-	private List<Product> productCatalogList;
+	private List<ProductCatalog> productCatalogList;
 }

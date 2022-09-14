@@ -1,5 +1,6 @@
 package com.inventory.main;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
@@ -73,12 +74,21 @@ class InventoryServiceTest {
 		assertEquals(null, inventoryService.getItemByProductCode("PRO05"));
 	}
 	@Test
-	void testUpdateQuantityByProductCode() {
+	void testUpdateQuantityByProductCodePositive() {
 		Mockito.when(inventoryDao.updateRecord("PRO01", 1000)).thenReturn(1);
-//		InventoryItem it =  inventoryItemList.getInventoryItems().get(0);
-//		it.setAvailableQuantity(1000);
-//		inventoryItemList.getInventoryItems().set(0, it);
 		assertTrue(inventoryService.updateQuantityByProductCode("PRO01", 1000));
+	}
+	
+	@Test
+	void testUpdateQuantityByProductCodeNegativequantity() {
+		Mockito.when(inventoryDao.updateRecord("PRO01", -100)).thenReturn(0);
+		assertFalse(inventoryService.updateQuantityByProductCode("PRO01", -100));
+	}
+	
+	@Test
+	void testUpdateQuantityByProductCodeProductNotInList() {
+		Mockito.when(inventoryDao.updateRecord("PRO05", 1000)).thenReturn(0);
+		assertFalse(inventoryService.updateQuantityByProductCode("PRO05", 1000));
 	}
 
 }
