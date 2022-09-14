@@ -90,5 +90,11 @@ class InventoryServiceTest {
 		Mockito.when(inventoryDao.updateRecord("PRO05", 1000)).thenReturn(0);
 		assertFalse(inventoryService.updateQuantityByProductCode("PRO05", 1000));
 	}
+	
+	@Test
+	void testUpdateQuantityByProductCodeInvalidQtyProductNotInList() {
+		Mockito.when(inventoryDao.updateRecord("PRO05", -10)).thenReturn(0);
+		assertFalse(inventoryService.updateQuantityByProductCode("PRO05", -10));
+	}
 
 }
