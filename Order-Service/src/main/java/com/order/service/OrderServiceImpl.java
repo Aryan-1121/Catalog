@@ -8,7 +8,7 @@ import com.order.bean.Order;
 public class OrderServiceImpl implements OrderService{
 
 	@Override
-	public Order saveIntoOrders(Order order) {
+	public Order saveOrder(Order order) {
 		// TODO Auto-generated method stub
 		return null;
 	}

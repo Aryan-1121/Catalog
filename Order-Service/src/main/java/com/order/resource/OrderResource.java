@@ -18,7 +18,7 @@ public class OrderResource {
 	
 	@PostMapping(path = "/orders", consumes = MediaType.APPLICATION_JSON_VALUE, produces =  MediaType.APPLICATION_JSON_VALUE)
 	public Order saveOder(@RequestBody Order order) {
-		return orderService.saveIntoOrders(order);
+		return orderService.saveOrder(order);
 		
 	}
 
